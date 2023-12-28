@@ -1,6 +1,8 @@
-import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
+import 'package:bookly_app/core/utlis/styles.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/books_list_view.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -8,38 +10,158 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(left: 24.0, right: 24),
-        child: SafeArea(
-          child: Column(children: [
-            CustomAppBar(),
-            BooksListView(),
-          ]),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(left: 24.0, right: 24),
+          child: SafeArea(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              CustomAppBar(),
+              BooksListView(),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 12.0),
+                child: Text(
+                  'Best saller',
+                  style: Styles.textStyle18,
+                ),
+              ),
+              BestSellerListView(),
+            ]),
+          ),
         ),
       ),
     );
   }
 }
 
-class BooksListView extends StatelessWidget {
-  const BooksListView({
+class BestSellerListView extends StatelessWidget {
+  const BestSellerListView({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) {
-          return const Padding(
-            padding: EdgeInsets.only(right: 10.0),
-            child: BookItem(),
-          );
-        },
-      ),
+    return ListView.builder(
+      itemCount: 10,
+      shrinkWrap: true,
+      // physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.0),
+          child: BestSellerItem(),
+        );
+      },
+    );
+  }
+}
+
+class BestSellerItem extends StatelessWidget {
+  const BestSellerItem({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(
+          height: 125,
+          child: BestSellerImage(),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.35,
+                child: Text(
+                  'Harry poter and the Goblet of Fire',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Styles.textStyle20
+                      .copyWith(fontFamily: 'GTSectraFineRegular'),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                'J.K. Rowling',
+                style:
+                    Styles.textStyle18.copyWith(color: const Color(0xff707070)),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    r'19.99 $',
+                    style: Styles.textStyle18
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const RatingRow()
+                ],
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class RatingRow extends StatelessWidget {
+  const RatingRow({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Icon(
+          FontAwesomeIcons.solidStar,
+          color: Color(0xffFFDD4F),
+          size: 15,
+        ),
+        const SizedBox(
+          width: 6.3,
+        ),
+        const Text(
+          '4.8',
+          style: Styles.textStyle16,
+        ),
+        const SizedBox(
+          width: 6.3,
+        ),
+        Text(
+          '(125)',
+          style: Styles.textStyle14.copyWith(color: const Color(0xff707070)),
+        )
+      ],
+    );
+  }
+}
+
+class BestSellerImage extends StatelessWidget {
+  const BestSellerImage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 2.5 / 4,
+      child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.red,
+              image: const DecorationImage(
+                image: AssetImage('assets/images/test_image.png'),
+              ))),
     );
   }
 }

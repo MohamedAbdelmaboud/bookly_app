@@ -17,4 +17,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: kPrimaryColor,
-    textTheme: GoogleFonts.montserr
+    textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme)
+      ),
+      home: const HomeView(),
+    );
+  }
+}

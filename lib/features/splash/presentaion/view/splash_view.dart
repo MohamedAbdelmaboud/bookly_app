@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/splash/presentaion/view/widgets/splash_body.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);
@@ -26,10 +26,10 @@ class _SplashViewState extends State<SplashView> {
       body: SplashBody(),
     );
   }
-}
 
-void naviagteToHome() {
-  Timer(const Duration(seconds: 3), () {
-    Get.to(const HomeView(), curve: Curves.easeOutQuart);
-  });
+  void naviagteToHome() {
+    Timer(const Duration(seconds: 3), () {
+      GoRouter.of(context).pushReplacement(HomeView.id);
+    });
+  }
 }

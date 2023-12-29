@@ -1,7 +1,6 @@
 import 'package:bookly_app/constant.dart';
-import 'package:bookly_app/features/home/presentation/views/home_view.dart';
+import 'package:bookly_app/core/utlis/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -14,12 +13,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp.router(
+      routerConfig: Routes.router,
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: kPrimaryColor,
-    textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme)
+      textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme)
       ),
-      home: const HomeView(),
     );
   }
 }

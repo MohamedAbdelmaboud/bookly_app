@@ -9,8 +9,8 @@ abstract class Styles {
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
-  static const textStyle30 = TextStyle(
-    fontSize: 30,
+  static const textStyle25 = TextStyle(
+    fontSize: 25,
     fontWeight: FontWeight.w900,
     fontFamily: 'GTSectraFineRegular',
     letterSpacing: 1.2,

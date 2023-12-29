@@ -1,6 +1,8 @@
 import 'package:bookly_app/core/utlis/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_action.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_image.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/like_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -36,7 +38,9 @@ class DetailsView extends StatelessWidget {
                       )),
                 ],
               ),
-              const BookItem(),
+              SizedBox(
+                  height: MediaQuery.of(context).size.height * .30,
+                  child: const CustomImage()),
               const SizedBox(
                 height: 43,
               ),
@@ -63,74 +67,18 @@ class DetailsView extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              const Text(
-                'You can also Like',
-                style: Styles.textStyle16,
+               Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'You can also Like ♥',
+                  style: Styles.textStyle16.copyWith(fontStyle: FontStyle.italic),
+                ),
               ),
               const SizedBox(
                 height: 16,
               ),
+              const LikeListView(),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class BookAction extends StatelessWidget {
-  const BookAction({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        CustomButton(
-          text: r'19.99$',
-          borderRadius: BorderRadius.horizontal(left: Radius.circular(10)),
-        ),
-        CustomButton(
-            text: 'Free Preview',
-            textColor: Colors.white,
-            backgroundColor: Color(0xffEF8262),
-            borderRadius: BorderRadius.horizontal(
-              right: Radius.circular(10),
-            )),
-      ],
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  const CustomButton({
-    super.key,
-    required this.text,
-    this.backgroundColor = Colors.white,
-    this.textColor = Colors.black,
-    required this.borderRadius,
-  });
-  final String text;
-  final Color backgroundColor;
-  final Color textColor;
-  final BorderRadiusGeometry borderRadius;
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        height: 50,
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-              alignment: Alignment.center,
-              backgroundColor: backgroundColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: borderRadius,
-              )),
-          child: Text(
-            text,
-            style: Styles.textStyle16.copyWith(color: textColor),
           ),
         ),
       ),

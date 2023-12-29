@@ -2,6 +2,7 @@ import 'package:bookly_app/core/utlis/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/details_view.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/books_list_view.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +14,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        //physics: BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.only(left: 24.0, right: 24),
           child: SafeArea(
@@ -74,7 +75,7 @@ class BestSellerItem extends StatelessWidget {
         children: [
           const SizedBox(
             height: 125,
-            child: BestSellerImage(),
+            child: CustomImage(),
           ),
           const SizedBox(
             width: 20,
@@ -156,22 +157,3 @@ class RatingRow extends StatelessWidget {
   }
 }
 
-class BestSellerImage extends StatelessWidget {
-  const BestSellerImage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2.5 / 4,
-      child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.red,
-              image: const DecorationImage(
-                image: AssetImage('assets/images/test_image.png'),
-              ))),
-    );
-  }
-}

@@ -28,7 +28,7 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void naviagteToHome() {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 4), () {
       GoRouter.of(context).pushReplacement(HomeView.id);
     });
   }

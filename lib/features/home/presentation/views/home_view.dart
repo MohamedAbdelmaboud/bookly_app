@@ -156,4 +156,3 @@ class RatingRow extends StatelessWidget {
     );
   }
 }
-

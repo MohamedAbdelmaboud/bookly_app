@@ -1,10 +1,10 @@
 import 'package:bookly_app/features/home/presentation/views/details_view.dart';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
-import 'package:bookly_app/features/splash/presentaion/view/splash_view.dart';
+import 'package:bookly_app/features/splash/presentaion/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class Routes {
- static final router = GoRouter(routes: [
+  static final router = GoRouter(routes: [
     GoRoute(
       path: '/',
       builder: (context, state) => const SplashView(),

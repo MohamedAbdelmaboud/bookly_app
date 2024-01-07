@@ -16,9 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: Routes.router,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: kPrimaryColor,
-      textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme)
-      ),
+      theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: kPrimaryColor,
+          textTheme:
+              GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme)),
     );
   }
 }

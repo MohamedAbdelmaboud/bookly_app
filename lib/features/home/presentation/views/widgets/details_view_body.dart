@@ -62,7 +62,7 @@ class DetailsViewBody extends StatelessWidget {
               ),
             ),
             const RatingRow(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center, ratingsCount: 155,
             ),
             const SizedBox(
               height: 25,

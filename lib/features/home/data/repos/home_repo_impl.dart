@@ -5,7 +5,7 @@ import 'package:bookly_app/features/home/data/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
-class HomeRepoImpl extends HomeRepo {
+class HomeRepoImpl implements  HomeRepo {
   ApiService apiService = ApiService();
   @override
   Future<Either<Failure, List<BookModel>>> fectchNewestBooks() async {
@@ -17,24 +17,29 @@ class HomeRepoImpl extends HomeRepo {
       List<BookModel> bookModels = List.generate(
           data.length, (index) => BookModel.fromJson(data[index]));
       return right(bookModels);
-    } catch (e) {
-      if (e is DioException) {
+    }on DioException catch (e) {
+     
         return left(ServerFailure.fromDioException(e));
-      }
-      return left(ServerFailure(
-        errorMessage: e.toString(),
-      ));
+     
+      
     }
+    catch(e)
+    {
+     return left(ServerFailure(
+        errorMessage: e.toString(),
+      )); 
+    }
+    
   }
 
   @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var jsonData = await apiService.get(
-          endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming');
+          endPoint: 'volumes*?q=subject:general');
       List data = jsonData['items'];
       List<BookModel> bookModels =
-          List.generate(data.length, (index) => data[index]);
+          List.generate(data.length, (index) => BookModel.fromJson(data[index]));
       return right(bookModels);
     } catch (e) {
       if (e is DioException) {

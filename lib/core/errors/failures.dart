@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-class Failure {
+abstract  class Failure {
   final String errorMessage;
 
   Failure({required this.errorMessage});
@@ -26,8 +26,11 @@ class ServerFailure extends Failure {
         return ServerFailure(
             errorMessage: 'The request was manually cancelled by the user.');
       case DioExceptionType.connectionError:
-        return ServerFailure(errorMessage: 'No internet Connection');
+        return ServerFailure(errorMessage: 'connection Error');
       case DioExceptionType.unknown:
+       if (dioException.message!.contains('SocketException')) {
+          return ServerFailure(errorMessage:'No Internet Connection');
+        }
         return ServerFailure(
             errorMessage: 'unknown exception, please try again');
       default:

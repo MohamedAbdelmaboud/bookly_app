@@ -22,7 +22,7 @@ class FeaturedBooksListView extends StatelessWidget {
               itemCount: state.bookModels.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: const EdgeInsets.only(right: 10.0),
+                  padding: const EdgeInsets.only(right: 12.0),
                   child: CustomImage(
                     imageUrl:
                         state.bookModels[index].volumeInfo.imageLinks.thumbnail,
@@ -33,10 +33,10 @@ class FeaturedBooksListView extends StatelessWidget {
           );
         } else if (state is FeaturedBooksFailure) {
           return Column(
-            children: [const Icon(Icons.error), Text(state.errorMessage)],
+            children: [const Icon(Icons.error,size: 40), Text(state.errorMessage)],
           );
         } else {
-          return spinkit;
+          return const Center(child: spinkit);
         }
       },
     );

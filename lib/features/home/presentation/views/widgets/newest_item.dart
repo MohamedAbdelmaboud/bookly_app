@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/utlis/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/details_view.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_image.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/rating_row.dart';
@@ -8,8 +9,9 @@ import 'package:go_router/go_router.dart';
 class NewestItem extends StatelessWidget {
   const NewestItem({
     super.key,
+    required this.bookModel,
   });
-
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,11 +21,10 @@ class NewestItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 125,
+          SizedBox(
+            height: 150,
             child: CustomImage(
-              imageUrl:
-                  'https://books.google.com/books/content?id=ku7EEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+              imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
             ),
           ),
           const SizedBox(
@@ -36,7 +37,7 @@ class NewestItem extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
-                    'Harry poter and the Goblet of Fire',
+                    bookModel.volumeInfo.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle20
@@ -47,7 +48,7 @@ class NewestItem extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  'J.K. Rowling',
+                  bookModel.volumeInfo.authors![0],
                   style: Styles.textStyle16
                       .copyWith(color: Colors.white.withOpacity(0.6)),
                 ),
@@ -55,11 +56,11 @@ class NewestItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      r'19.99 $',
+                      'Free',
                       style: Styles.textStyle16
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
-                    const RatingRow()
+                    const RatingRow(ratingsCount: 155,)
                   ],
                 ),
               ],

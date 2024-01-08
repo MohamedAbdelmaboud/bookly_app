@@ -18,7 +18,10 @@ class LikeListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 15,
         itemBuilder: (BuildContext context, int index) {
-          return const CustomImage();
+          return const CustomImage(
+            imageUrl:
+                'https://books.google.com/books/content?id=ku7EEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+          );
         },
       ),
     );

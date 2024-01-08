@@ -1,8 +1,8 @@
 import 'package:bookly_app/core/utlis/styles.dart';
-import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_action.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_image.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/like_list_view.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/rating_row.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -41,7 +41,10 @@ class DetailsViewBody extends StatelessWidget {
             ),
             SizedBox(
                 height: MediaQuery.of(context).size.height * .30,
-                child: const CustomImage()),
+                child: const CustomImage(
+                  imageUrl:
+                      'https://books.google.com/books/content?id=ku7EEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+                )),
             const SizedBox(
               height: 43,
             ),

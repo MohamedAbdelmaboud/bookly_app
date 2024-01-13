@@ -2,7 +2,7 @@ import 'package:bookly_app/constant.dart';
 import 'package:bookly_app/core/utlis/routes.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly_app/features/home/presentation/view_models/featured_books_cubit/featured_books_cubit.dart';
-import 'package:bookly_app/features/home/presentation/view_models/newset_books_cubit/newset_books_cubit.dart';
+import 'package:bookly_app/features/home/presentation/view_models/newest_books_cubit/newset_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => NewsetBooksCubit(HomeRepoImpl())..fetchNewestBooks()),
+        BlocProvider(create: (context) => NewestBooksCubit(HomeRepoImpl())..fetchNewestBooks()),
         BlocProvider(create: (context) => FeaturedBooksCubit(HomeRepoImpl())..fetchFeaturedBooks())
       ],
       child: MaterialApp.router(

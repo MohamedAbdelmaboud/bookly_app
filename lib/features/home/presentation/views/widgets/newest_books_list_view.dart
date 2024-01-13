@@ -1,5 +1,5 @@
 import 'package:bookly_app/core/widgets/custom_spinkit.dart';
-import 'package:bookly_app/features/home/presentation/view_models/newset_books_cubit/newset_books_cubit.dart';
+import 'package:bookly_app/features/home/presentation/view_models/newest_books_cubit/newset_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/newest_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +11,7 @@ class NewestBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewsetBooksCubit, NewsetBooksState>(
+    return BlocBuilder<NewestBooksCubit, NewsetBooksState>(
       builder: (context, state) {
         if (state is NewsetBooksSuccess) {
           return ListView.builder(

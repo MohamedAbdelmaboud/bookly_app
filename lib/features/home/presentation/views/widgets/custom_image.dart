@@ -12,7 +12,7 @@ class CustomImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: AspectRatio(
-        aspectRatio: 2.5 / 4,
+        aspectRatio: 2.6 / 4,
         child: CachedNetworkImage(imageUrl: imageUrl
      , errorWidget: (context, url, error) => const Icon(Icons.error),
         ),

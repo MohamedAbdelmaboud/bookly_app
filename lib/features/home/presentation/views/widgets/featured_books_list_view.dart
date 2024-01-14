@@ -1,8 +1,11 @@
 import 'package:bookly_app/core/widgets/custom_spinkit.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/view_models/featured_books_cubit/featured_books_cubit.dart';
+import 'package:bookly_app/features/home/presentation/views/details_view.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({
@@ -23,9 +26,15 @@ class FeaturedBooksListView extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 12.0),
-                  child: CustomImage(
-                    imageUrl:
-                        state.bookModels[index].volumeInfo.imageLinks.thumbnail,
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context)
+                          .push(DetailsView.id, extra: state.bookModels[index]);
+                    },
+                    child: CustomImage(
+                        imageUrl: state.bookModels[index].volumeInfo.imageLinks
+                                ?.thumbnail ??
+                            ''),
                   ),
                 );
               },
@@ -33,10 +42,14 @@ class FeaturedBooksListView extends StatelessWidget {
           );
         } else if (state is FeaturedBooksFailure) {
           return Column(
-            children: [const Icon(Icons.error,size: 40), Text(state.errorMessage)],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.error, size: 40),
+              Text(state.errorMessage)
+            ],
           );
         } else {
-          return const Center(child: spinkit);
+          return const Center(child: spinkit2);
         }
       },
     );

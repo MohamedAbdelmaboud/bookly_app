@@ -16,7 +16,7 @@ class NewestItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(DetailsView.id);
+        GoRouter.of(context).push(DetailsView.id, extra: bookModel);
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +24,7 @@ class NewestItem extends StatelessWidget {
           SizedBox(
             height: 150,
             child: CustomImage(
-              imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
+              imageUrl: bookModel.volumeInfo.imageLinks!.thumbnail,
             ),
           ),
           const SizedBox(
@@ -37,7 +37,7 @@ class NewestItem extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Text(
-                    bookModel.volumeInfo.title,
+                    bookModel.volumeInfo.title!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle20
@@ -60,7 +60,9 @@ class NewestItem extends StatelessWidget {
                       style: Styles.textStyle16
                           .copyWith(fontWeight: FontWeight.bold),
                     ),
-                    const RatingRow(ratingsCount: 155,)
+                     RatingRow(
+                      ratingsCount: bookModel.volumeInfo.pageCount!,
+                    )
                   ],
                 ),
               ],

@@ -23,7 +23,7 @@ class SplashBody extends StatelessWidget {
               totalRepeatCount: 1,
               animatedTexts: [
                 WavyAnimatedText('Read books for free',
-                    speed: const Duration(milliseconds: 200)),
+                    speed: const Duration(milliseconds: 150)),
               ],
             ),
           ),

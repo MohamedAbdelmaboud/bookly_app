@@ -20,7 +20,7 @@ abstract class Routes {
     ),
      GoRoute(
       path: WebView.id,
-      builder: (context, state) =>  WebView(url: state.extra as String),
+      builder: (context, state) =>  WebView(bookModel: state.extra as BookModel),
     ),
     GoRoute(
       path: DetailsView.id,

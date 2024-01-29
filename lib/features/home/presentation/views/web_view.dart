@@ -20,7 +20,9 @@ class WebView extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(99)),
           backgroundColor: const Color(0xff000000),
           onPressed: () async {
-            await _launchUrl(url: 'https://pub.dev/packages/url_launcher');
+            if (bookModel.accessInfo!.pdf!.acsTokenLink != null) {
+              await _launchUrl(url: bookModel.accessInfo!.pdf!.acsTokenLink!);
+            }
           },
           child: const Icon(
             Icons.download,

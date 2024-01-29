@@ -35,7 +35,9 @@ class NewestBooksListView extends StatelessWidget {
             ],
           );
         } else {
-          return const Center(child: spinkit);
+         return SizedBox(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: const Center(child: spinkit));
         }
       },
     );
